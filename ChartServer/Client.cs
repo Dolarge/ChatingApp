@@ -22,7 +22,7 @@ namespace ChartServer
             var opcode = _packetReader.ReadByte();
             
             //get UserName
-            Username = _packetReader.ReadString();
+            Username = _packetReader.ReadMesassage();
 
             Console.WriteLine($"[{DateTime.Now}]: Client has connected with USERName(GUID) :{Username} ");
 

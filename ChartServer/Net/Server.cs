@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChartServer.Net.IO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -29,7 +30,7 @@ namespace ChatClient.Net
 
                 //send Packet message to server
                 connectPacket.WriteOpCode(0);
-                connectPacket.WriteString(UserName);
+                connectPacket.WriteMessage(UserName);
                 _client.Client.Send(connectPacket.GetPackByte());
                 
             }

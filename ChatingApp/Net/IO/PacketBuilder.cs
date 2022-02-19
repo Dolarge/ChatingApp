@@ -11,6 +11,7 @@ namespace ChatClient.Net
         public PacketBuilder()
         {
             _ms= new MemoryStream();
+
         }
 
         public void WriteOpCode(byte opcode)
@@ -18,7 +19,7 @@ namespace ChatClient.Net
             _ms.WriteByte(opcode);
         }
 
-        public void WriteString(string msg)
+        public void WriteMessage(string msg)
         {
             var msgLength = msg.Length;
             _ms.Write(BitConverter.GetBytes(msgLength));

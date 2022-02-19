@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatClient.Net
+namespace ChartServer.Net.IO
 {
     class PacketBuilder
     {
@@ -13,7 +13,7 @@ namespace ChatClient.Net
 
         public PacketBuilder()
         {
-            _ms= new MemoryStream();
+            _ms = new MemoryStream();
 
         }
 
@@ -22,7 +22,7 @@ namespace ChatClient.Net
             _ms.WriteByte(opcode);
         }
 
-        public void WriteString(string msg)
+        public void WriteMessage(string msg)
         {
             var msgLength = msg.Length;
             _ms.Write(BitConverter.GetBytes(msgLength));

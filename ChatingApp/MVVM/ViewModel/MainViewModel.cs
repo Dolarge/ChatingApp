@@ -18,8 +18,14 @@ namespace ChatClient.MVVM.ViewModel
         public MainViewModel()
         {
             _server = new Server();
+            _server.connectedEvent += UserConnected;
             //if UserName is empty, cant Run RelayCommand
             ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer(UserName),o=>!string.IsNullOrEmpty(UserName));
+        }
+
+        private void UserConnected()
+        {
+            throw new NotImplementedException();
         }
     }
 }
