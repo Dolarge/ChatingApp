@@ -20,8 +20,9 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel>
-            <TextBlock Height="25"
-                   DockPanel.Dock="Top"/>
+            <TextBox Height="25"
+                   DockPanel.Dock="Top"
+                       Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Height="25"
                     Content="Connect"
                     Command="{Binding ConnectToServerCommand }"
@@ -38,7 +39,7 @@
                                  VerticalContentAlignment="Center"/>
 
                 <Button Width="55" Content="Send" />
-                
+
             </StackPanel>
         </StackPanel>
     </Grid>

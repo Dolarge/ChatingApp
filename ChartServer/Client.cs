@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ChatClient.Net.IO;
+using System;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChartServer
 {
@@ -12,11 +9,20 @@ namespace ChartServer
         public string Username { get; set; }
         public Guid UID { get; set; }
         public TcpClient ClientSocket { get; set; }
+        PacketReader _packetReader;
+
 
         public Client(TcpClient client)
         {
             ClientSocket = client;            
             UID = Guid.NewGuid();
+
+            //Read PacketReader
+            _packetReader = new PacketReader(client.GetStream());
+            var opcode = _packetReader.ReadByte();
+            
+            //get UserName
+            Username = _packetReader.ReadString();
 
             Console.WriteLine($"[{DateTime.Now}]: Client has connected with USERName(GUID) :{Username} ");
 
